@@ -1,21 +1,18 @@
 import React, { Fragment } from 'react';
-import { Container } from './style';
-import { Header } from '../Header';
-// import { Content } from '../Content';
+import { ContainerWrapper } from './style';
+import { Error } from '../Error';
 import { Spinner } from '../Spinner';
-import { IssueList } from '../IssueList';
+import { IssuePage } from '../IssuePage';
+import { IssueDetailPage } from '../IssueDetailPage';
 
 export const App = () => {
     return (
-        <Container>
-                <Fragment>
-                    <Header />
-                    <IssueList />
-                    <Spinner/>
-                    {/* <Content />
-                    <Error /> */}
-                </Fragment>
-        </Container>
+        <ContainerWrapper>
+            <Spinner />
+            <IssuePage />
+            <IssueDetailPage/>
+            <Error />
+        </ContainerWrapper>
     );
 }
 

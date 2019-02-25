@@ -1,10 +1,8 @@
 
 import styled from 'styled-components';
-import { Card, Col, ListGroup } from 'react-bootstrap'
 
 
-
-export const IssueStateColWrapper = styled(Col)`
+export const IssueStateWrapper = styled.div`
     text-align: center;
     padding-right:0px;
     padding-left: 5px;

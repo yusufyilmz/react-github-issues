@@ -1,9 +1,7 @@
 
 import styled from 'styled-components';
-import { Col } from 'react-bootstrap'
 
-
-export const IssueBodyColWrapper = styled(Col)`
+export const IssueBodyWrapper = styled.div`
     text-align: left;
     overflow: hidden;
     text-overflow: clip;

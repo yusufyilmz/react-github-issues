@@ -8,14 +8,12 @@ export const Spinner = () => {
         <LoaderContainer>
             {
                 (props) => (
-                    <div className='sweet-loading'>
-                        <ClipLoader
-                            sizeUnit={"px"}
-                            size={100}
-                            color={'#123abc'}
-                            loading={props.loading}
-                        />
-                    </div>
+                    <ClipLoader
+                        sizeUnit={"px"}
+                        size={100}
+                        color={'#123abc'}
+                        loading={props.loading}
+                    />
                 )
             }
         </LoaderContainer>

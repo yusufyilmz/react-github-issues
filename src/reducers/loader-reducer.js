@@ -8,13 +8,16 @@ const initialState = {
 export default function (state = initialState, action) {
     switch (action.type) {
 
-        case actionTypes.LOADING_BOOK_SUCCESS:
+        case actionTypes.LOADING_ISSUES_SUCCESS:
             return {
                 ...state,
                 loading: true
             }
-        case actionTypes.FETCH_BOOKS_SUCCESS:
-        
+        case actionTypes.FETCH_ISSUES_SUCCESS:
+        case actionTypes.SORT_ISSUES_SUCCESS:
+        case actionTypes.FETCH_ISSUES_ERROR:
+        case actionTypes.FETCH_SINGLE_ISSUE_SUCCESS:
+        case actionTypes.FILTER_ISSUES_SUCCESS:
             return {
                 ...state,
                 loading: false,

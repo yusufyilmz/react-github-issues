@@ -19,3 +19,4 @@ export const IssueCardWrapper = styled(ListGroup.Item)`
         background-color: #f6f8fa
     }
 `
+IssueCardWrapper.displayName = 'IssueCardWrapper'

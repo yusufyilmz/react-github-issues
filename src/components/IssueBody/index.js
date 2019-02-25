@@ -1,12 +1,6 @@
 import React from 'react';
-import { Card, Col, ListGroup, Row } from 'react-bootstrap';
-import { LinkButton, } from '../Elements/linkButton';
-import { IssueState } from '../IssueState';
-import { IssueComments } from '../IssueComments';
-import { IssueBodyColWrapper, IssueBodyAnchorWrapper, IssueBodyTextWrapper, IssueBodyTextAnchorWrapper } from './style';
-
+import {  IssueBodyWrapper, IssueBodyAnchorWrapper, IssueBodyTextWrapper, IssueBodyTextAnchorWrapper } from './style';
 import { IssueLabel } from '../IssueLabel';
-
 
 const calculateTimeDifference = (time) => {
     var dateTime = new Date(time);
@@ -15,7 +9,7 @@ const calculateTimeDifference = (time) => {
 
 export const IssueBody = ({ title, url, labels, time, number, state, user }) => {
     return (
-        <IssueBodyColWrapper md={9} xs={9}>
+        <IssueBodyWrapper>
             <IssueBodyAnchorWrapper
                 href={url} >
                 {title}
@@ -34,6 +28,6 @@ export const IssueBody = ({ title, url, labels, time, number, state, user }) => 
                     {user.login}
                 </IssueBodyTextAnchorWrapper>
             </IssueBodyTextWrapper>
-        </IssueBodyColWrapper>
+        </IssueBodyWrapper>
     );
 }

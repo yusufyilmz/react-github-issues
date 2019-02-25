@@ -9,11 +9,11 @@ const initialState = {
 export default function (state = initialState, action) {
     switch (action.type) {
 
-        case actionTypes.ERROR_OCCURED:
+        case actionTypes.FETCH_ISSUES_ERROR:
             return {
                 ...state,
                 error: true,
-                errorMessage: action.payload.message,
+                errorMessage: action.payload,
             }
         case actionTypes.RESET_ERROR:
             return {

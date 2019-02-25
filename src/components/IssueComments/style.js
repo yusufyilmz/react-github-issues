@@ -1,9 +1,8 @@
 
 import styled from 'styled-components';
-import { Col, InputGroup, ListGroup } from 'react-bootstrap'
 
 
-export const IssueCommentsColWrapper = styled(Col)`
+export const IssueCommentsWrapper = styled.div`
     text-align: right;
     padding-right:10px;
     padding-left: 0px;

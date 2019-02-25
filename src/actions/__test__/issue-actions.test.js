@@ -4,19 +4,19 @@ import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk';
 import promise from 'redux-promise';
 import moxios from 'moxios';
-import * as messages from '../../constants/messages';
 
 const middlewares = [thunk, promise];
 const mockStore = configureMockStore(middlewares);
 
 describe('ACTIONS', () => {
 
-    let store, item;
-
-
+    let store;
     beforeEach(function () {
-        store = mockStore({})
-        item = {}
+        store = mockStore({
+            issue: {
+                query: ''
+            }
+        })
         moxios.install();
     });
 
@@ -27,17 +27,10 @@ describe('ACTIONS', () => {
 
     test('BOOK FETCH ACTION SUCCESS', () => {
 
-        var response = {
-            status: 'OK',
-            data: [
-                {
-                    id: 1,
-                    genreId: 2,
-                    name: 'test',
-                    price: 5
-                }
-            ]
-        };
+        var response = [
+            {
+                title: 'test'
+            }];
 
         moxios.wait(() => {
             const request = moxios.requests.mostRecent();
@@ -49,14 +42,18 @@ describe('ACTIONS', () => {
 
         const expectedActions = [
             {
-                type: actionTypes.LOADING_BOOK_SUCCESS,
+                type: actionTypes.LOADING_ISSUES_SUCCESS,
             },
             {
-                type: actionTypes.FETCH_BOOKS_SUCCESS, payload: response.data
+                type: actionTypes.FETCH_ISSUES_SUCCESS, payload: {
+                    data: response,
+                    pageCount: 0,
+                    pageLinks: undefined,
+                }
             },
         ];
 
-        return store.dispatch(actions.fetchBooks()).then(() => {
+        return store.dispatch(actions.fetchIssues(1)).then(() => {
             expect(store.getActions()).toEqual(expectedActions);
         });
 
@@ -74,44 +71,28 @@ describe('ACTIONS', () => {
 
         const expectedActions = [
             {
-                type: actionTypes.LOADING_BOOK_SUCCESS,
+                type: actionTypes.LOADING_ISSUES_SUCCESS,
             },
             {
-                type: actionTypes.ERROR_OCCURED, payload: response
+                type: actionTypes.FETCH_ISSUES_ERROR, payload: response.message
             },
         ];
 
-        return store.dispatch(actions.fetchBooks()).then(() => {
+        return store.dispatch(actions.fetchIssues(1)).then(() => {
             expect(store.getActions()).toEqual(expectedActions);
         });
-
     })
 
-    test('BOOK FETCH ACTION API ERROR', () => {
 
-        var response = {
-            status: 'ERROR',
-            message: messages.SERVER_ERROR
-        };
-
-        moxios.wait(() => {
-            const request = moxios.requests.mostRecent();
-            request.respondWith({
-                status: 200,
-                response
-            });
-        });
+    test('BOOK FETCH ACTION 400 ERROR', () => {
 
         const expectedActions = [
             {
-                type: actionTypes.LOADING_BOOK_SUCCESS,
-            },
-            {
-                type: actionTypes.ERROR_OCCURED, payload: response
-            },
+                type: actionTypes.BACK_TO_ISSUE_PAGE,
+            }
         ];
 
-        return store.dispatch(actions.fetchBooks()).then(() => {
+        return store.dispatch(actions.backToIssuePage()).then(() => {
             expect(store.getActions()).toEqual(expectedActions);
         });
     })

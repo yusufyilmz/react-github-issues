@@ -1,10 +1,10 @@
 import React from 'react';
-import { IssueCommentsColWrapper, IssueCommentsAnchorWrapper } from './style';
+import { IssueCommentsWrapper, IssueCommentsAnchorWrapper } from './style';
 
 
 export const IssueComments = ({ comments, url }) => {
     return (
-        <IssueCommentsColWrapper md={2} xs={2}>
+        <IssueCommentsWrapper>
             <IssueCommentsAnchorWrapper
                 href={url} >
                 <svg
@@ -21,6 +21,6 @@ export const IssueComments = ({ comments, url }) => {
                     {comments}
                 </span>
             </IssueCommentsAnchorWrapper>
-        </IssueCommentsColWrapper>
+        </IssueCommentsWrapper>
     );
 }
